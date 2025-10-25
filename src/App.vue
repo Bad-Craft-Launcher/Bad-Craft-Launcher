@@ -11,16 +11,11 @@ async function greet() {
 </script>
 
 <template>
-  <main class="container">
-    <h1>Test 111</h1>
-    <p>Debug Test</p>
-
-    <form class="row" @submit.prevent="greet">
-      <input id="greet-input" v-model="name" placeholder="Texts" />
-      <button type="submit">Okay</button>
-    </form>
-    <p>{{ greetMsg }}</p>
-  </main>
+    <fluent-card>
+        <h3>Fluent Card Example</h3>
+        <fluent-button appearance="accent">Fluent Button</fluent-button>
+    </fluent-card>
+    <fluent-switch>test</fluent-switch>
 </template>
 
 <style scoped>
