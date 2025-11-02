@@ -10,7 +10,6 @@
     "tauri": "tauri"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@material/web": "^2.4.1",
     "@tauri-apps/api": "^2.9.0",
     "@tauri-apps/plugin-opener": "^2.5.2",
@@ -22,18 +21,5 @@
     "typescript": "6.0.0-dev.20251101",
     "vite": "^7.1.12",
     "vue-tsc": "^3.1.2"
-=======
-    "@fluentui/web-components": "^2.6.1",
-    "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-opener": "^2",
-    "vue": "^3.5.13"
-  },
-  "devDependencies": {
-    "@tauri-apps/cli": "^2",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "typescript": "6.0.0-dev.20251025",
-    "vite": "^6.0.3",
-    "vue-tsc": "^2.1.10"
->>>>>>> 12dd949d5b2bba9556835a1238c5fd7d6fee3f06
   }
 }
