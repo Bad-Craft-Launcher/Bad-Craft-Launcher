@@ -1,0 +1,32 @@
+[unstable]
+build-std = ["core", "std", "alloc", "proc_macro", "panic_abort"]
+build-std-features = ["default", "optimize_for_size"]
+
+[build]
+rustflags = [
+    "-Z", "threads=8",
+    "-C", "link-args=-Wl,--gc-sections",
+    "-C", "embed-bitcode=no",
+    "-C", "linker=rust-lld",
+    "-C", "link-arg=-fuse-ld=lld",
+]
+
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=lld", "-C", "link-arg=--gc-sections"]
+
+[target.aarch64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=lld", "-C", "link-arg=--gc-sections"]
+
+[target.x86_64-apple-darwin]
+linker = "clang"
+
+[target.aarch64-apple-darwin]
+linker = "clang"
+
+[target.x86_64-pc-windows-msvc]
+linker = "clang-cl"
+
+[target.aarch64-pc-windows-msvc]
+linker = "clang-cl"

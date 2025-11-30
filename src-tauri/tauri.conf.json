@@ -7,7 +7,8 @@
     "devUrl": "http://localhost:3920",
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm build",
-    "frontendDist": "../dist"
+    "frontendDist": "../dist",
+    "removeUnusedCommands": true
   },
   "app": {
     "windows": [
@@ -15,7 +16,7 @@
         "title": "Bad Craft Launcher",
         "width": 800,
         "height": 600,
-        "decorations": true
+        "decorations": false
       }
     ],
     "security": {

@@ -4,17 +4,26 @@ version = "1.0.10"
 description = "A Minecraft: Java Edition on Cross-Platform devices"
 license = "GNU General Public License v3.0"
 repository = "https://github.com/Bad-Craft-Launcher/Bad-Craft-Launcher"
-homepage = "https://launcher.dcrstudio.top"
 authors = ["TNTyep520 <sbtntyep520@gmail.com>"]
 rust-version = "1.92.0"
 edition = "2021"
 
-[profile.release]
+[profile.dev]
 panic = "abort"
-lto = true
+
+[profile.release]
+opt-level = "z"
 codegen-units = 1
-opt-level = 3
-strip = true
+lto = "fat"
+panic = "abort"
+debug = 0
+debug-assertions = false
+overflow-checks = false
+incremental = false
+strip = "symbols"
+split-debuginfo = "off"
+trim-paths = "all"
+rpath = false
 
 [lib]
 name = "bad_craft_launcher_lib"

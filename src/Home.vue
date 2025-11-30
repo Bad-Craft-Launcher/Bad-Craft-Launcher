@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
+import Navbar from './components/Navbar.vue';
 
 </script>
 
 <template>
+  <Navbar />
   <h3>Material Card Example</h3>
   <md-filled-button style="margin-top: 16px;">
       Material Button

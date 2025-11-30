@@ -4,6 +4,6 @@ import "@material/web/dialog/dialog.js";
 import "@material/web/icon/icon.js";
 
 import { createApp } from "vue";
-import App from "./home.vue";
+import App from "./Home.vue";
 
 createApp(App).mount("#app");
