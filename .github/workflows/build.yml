@@ -97,7 +97,7 @@ jobs:
           $llvmPath = 'C:\Program Files\LLVM\bin'
           echo "PATH=$llvmPath;${env:PATH}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      - name: Setup Rust (nightly)
+      - name: Setup Rust nightly
         uses: actions-rs/toolchain@v1
         with:
           toolchain: nightly
@@ -122,8 +122,8 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y --no-install-recommends \
-            libgtk-3-dev libwebkit2gtk-4.0-dev libayatana-appindicator3-dev \
-            librsvg2-dev patchelf rpm appstream bsdtar binutils zstd pkg-config
+            libgtk-3-dev libwebkit2gtk-4.0 libayatana-appindicator3-dev \
+            librsvg2-dev patchelf rpm appstream libarchive-tools binutils zstd pkg-config
             
       - name: Build Tauri App
         env:
