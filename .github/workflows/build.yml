@@ -89,7 +89,7 @@ jobs:
           llvm_prefix=$(brew --prefix llvm)
           echo "PATH=${llvm_prefix}/bin:$PATH" >> $GITHUB_ENV
 
-      - name: Install LLVM (Windows)
+      - name: Install llvm (Windows)
         if: ${{ matrix.runs_on == 'windows-latest' }}
         shell: powershell
         run: |
@@ -103,6 +103,8 @@ jobs:
           toolchain: nightly
           target: ${{ matrix.rust_target }}
           profile: complete
+          override: true
+          components: rust-src
           
       - name: Cache cargo registry & target
         uses: actions/cache@v4
