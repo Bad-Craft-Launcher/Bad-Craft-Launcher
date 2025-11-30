@@ -52,7 +52,7 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Install Tauri dependencies
+      - name: Install Packages dependencies
         run: pnpm install
 
       - name: Setup Rust Nightly
@@ -64,15 +64,17 @@ jobs:
           profile: complete
           components: rust-src,clippy,rustfmt
 
-      - name: Install dependencies (Linux)
+      - name: Install Linux dependencies
         if: matrix.os == 'linux'
         run: |
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0 libappindicator3-dev build-essential pkg-config curl wget squashfs-tools flatpak rpm gnupg2 arch-install-scripts zstd patchelf librsvg2-dev
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0 libappindicator3-dev \
+            build-essential pkg-config curl wget squashfs-tools flatpak rpm gnupg2 \
+            arch-install-scripts zstd patchelf
 
-      - name: Build frontend
+      - name: Build Tauri App
         run: pnpm run tauri build
 
-      - name: Build Tauri for ${{ matrix.target }}
+      - name: Create Tauri package for ${{ matrix.target }}
         run: >
           pnpm dlx tauri build --target ${{ matrix.target }}
 

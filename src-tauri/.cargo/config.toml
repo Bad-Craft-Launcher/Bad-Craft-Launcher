@@ -5,5 +5,5 @@ build-std-features = ["default", "optimize_for_size"]
 [build]
 rustflags = [
     "-Z", "threads=8",
-    "-C", "embed-bitcode=no",
+    "-C", "debuginfo=0",
 ]
