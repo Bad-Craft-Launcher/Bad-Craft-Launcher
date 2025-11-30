@@ -1,3 +1,5 @@
+cargo-features = ["trim-paths"]
+
 [package]
 name = "Bad-Craft-Launcher"
 version = "1.0.10"
