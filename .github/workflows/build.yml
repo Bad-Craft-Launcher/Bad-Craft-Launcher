@@ -102,7 +102,7 @@ jobs:
         with:
           toolchain: nightly
           override: true
-          profile: minimal
+          profile: default
 
       - name: Add rust target
         run: rustup target add ${{ matrix.rust_target }}
