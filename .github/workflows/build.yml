@@ -101,12 +101,8 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: nightly
-          override: true
-          profile: default
-
-      - name: Add rust target
-        run: rustup target add ${{ matrix.rust_target }}
-
+          target: ${{ matrix.rust_target }}
+          
       - name: Cache cargo registry & target
         uses: actions/cache@v4
         with:
