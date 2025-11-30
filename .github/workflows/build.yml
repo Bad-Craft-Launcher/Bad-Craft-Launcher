@@ -3,8 +3,6 @@ name: Build Artifact
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
   build:
@@ -57,7 +55,7 @@ jobs:
       - name: Install frontend dependencies
         run: pnpm install
 
-      - name: Setup Rust Nightly (all components)
+      - name: Setup Rust Nightly
         uses: actions-rs/toolchain@v1
         with:
           toolchain: nightly
@@ -66,13 +64,13 @@ jobs:
           profile: complete
           components: rust-src,clippy,rustfmt
 
-      - name: Install Clang on Linux
+      - name: Install llvm on Linux
         if: matrix.os == 'linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y clang lld
 
-      - name: Install Clang on macOS
+      - name: Install llvm on macOS
         if: matrix.os == 'macos'
         run: |
           brew update
@@ -81,18 +79,18 @@ jobs:
           echo "CC=$(brew --prefix llvm)/bin/clang" >> $GITHUB_ENV
           echo "CXX=$(brew --prefix llvm)/bin/clang++" >> $GITHUB_ENV
 
-      - name: Install LLVM/Clang on Windows
+      - name: Install llvm on Windows
         if: matrix.os == 'windows'
-        run: choco install llvm --version=17.0.6 -y
+        run: choco install llvm -y
 
       - name: Install system deps (Linux)
         if: matrix.os == 'linux'
         run: |
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev \
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0 libappindicator3-dev \
             build-essential lld pkg-config curl wget squashfs-tools flatpak rpm gnupg2 \
             arch-install-scripts zstd patchelf
 
-      - name: Tauri Windows build deps (仅x86_64, arm64)
+      - name: Tauri Windows build deps
         if: matrix.os == 'windows'
         run: |
           choco install gtk-runtime --yes --limit-output
