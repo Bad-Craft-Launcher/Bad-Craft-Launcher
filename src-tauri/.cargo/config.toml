@@ -5,8 +5,5 @@ build-std-features = ["default", "optimize_for_size"]
 [build]
 rustflags = [
     "-Z", "threads=8",
-    "-C", "link-args=-Wl,--gc-sections",
     "-C", "embed-bitcode=no",
-    "-C", "linker=clang",
-    "-C", "link-arg=-fuse-ld=lld",
 ]

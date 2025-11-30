@@ -52,7 +52,7 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      - name: Install frontend dependencies
+      - name: Install Tauri dependencies
         run: pnpm install
 
       - name: Setup Rust Nightly
@@ -64,41 +64,10 @@ jobs:
           profile: complete
           components: rust-src,clippy,rustfmt
 
-      - name: Install llvm on Linux
+      - name: Install dependencies (Linux)
         if: matrix.os == 'linux'
         run: |
-          sudo apt-get update
-          sudo apt-get install -y clang lld
-
-      - name: Install llvm on macOS
-        if: matrix.os == 'macos'
-        run: |
-          brew update
-          brew install llvm
-          echo "/opt/homebrew/opt/llvm/bin" >> $GITHUB_PATH
-          echo "CC=$(brew --prefix llvm)/bin/clang" >> $GITHUB_ENV
-          echo "CXX=$(brew --prefix llvm)/bin/clang++" >> $GITHUB_ENV
-
-      - name: Install llvm on Windows
-        if: matrix.os == 'windows'
-        run: choco install llvm -y
-
-      - name: Install system deps (Linux)
-        if: matrix.os == 'linux'
-        run: |
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0 libappindicator3-dev \
-            build-essential lld pkg-config curl wget squashfs-tools flatpak rpm gnupg2 \
-            arch-install-scripts zstd patchelf
-
-      - name: Tauri Windows build deps
-        if: matrix.os == 'windows'
-        run: |
-          choco install gtk-runtime --yes --limit-output
-
-      - name: Export Clang as CC/CXX (Linux/Windows/macos)
-        run: |
-          echo "CC=clang" >> $GITHUB_ENV
-          echo "CXX=clang++" >> $GITHUB_ENV
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0 libappindicator3-dev build-essential pkg-config curl wget squashfs-tools flatpak rpm gnupg2 arch-install-scripts zstd patchelf librsvg2-dev
 
       - name: Build frontend
         run: pnpm run tauri build
