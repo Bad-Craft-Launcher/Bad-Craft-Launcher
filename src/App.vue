@@ -1,11 +1,5 @@
 <template>
   <h3>Material Card Example</h3>
-  <md-filled-button style="margin-top: 16px;">
-      Material Button
-  </md-filled-button>
-  <md-switch style="margin: 24px auto; display: block;">
-    test
-  </md-switch>
 </template>
 
 <style>

@@ -1,5 +1,3 @@
-cargo-features = ["trim-paths"]
-
 [package]
 name = "Bad-Craft-Launcher"
 version = "1.0.10"
@@ -24,7 +22,6 @@ overflow-checks = false
 incremental = false
 strip = "symbols"
 split-debuginfo = "off"
-trim-paths = "all"
 rpath = false
 
 [lib]
