@@ -1,0 +1,55 @@
+[package]
+name = "bcl-launcher"
+version = "1.0.10"
+description = "A Minecraft: Java Edition on Cross-Platform devices."
+edition = "2024"
+
+[lib]
+name = "bcl_launcher_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.dev]
+panic = "abort"
+
+[profile.dev-fast]
+inherits = "dev"
+debug = false
+strip = "debuginfo"
+
+[profile.release]
+opt-level = "z"
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"
+debug = false
+debug-assertions = false
+overflow-checks = false
+incremental = false
+rpath = false
+
+[profile.release.package."*"]
+opt-level = "z"
+strip = true
+codegen-units = 1
+debug = false
+debug-assertions = false
+overflow-checks = false
+incremental = false
+
+[profile.release-fast]
+inherits = "release"
+codegen-units = 64
+
+[profile.release-fast.package."*"]
+inherits = "release"
+codegen-units = 64
